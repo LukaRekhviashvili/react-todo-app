@@ -9,6 +9,9 @@ class TodoItem extends React.Component {
           checked={this.props.todo.completed}
           onChange={() => this.props.handleChange(this.props.todo.id)}
         />
+        <button onClick={() => this.props.deleteTodo(this.props.todo.id)}>
+          Delete
+        </button>
         {this.props.todo.title}
       </li>
     );
