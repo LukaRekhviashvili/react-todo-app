@@ -1,5 +1,6 @@
-/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
+import TodosList from './TodosList';
+import Header from './Header';
 
 class TodoContainer extends React.Component {
   state = {
@@ -22,13 +23,28 @@ class TodoContainer extends React.Component {
     ],
   };
 
+  handleChange = (id) => {
+    this.setState((prevState) => {
+      return {
+        todos: prevState.todos.map((todo) => {
+          if (todo.id === id) {
+            return {
+              ...todo,
+              completed: !todo.completed,
+            };
+          }
+          return todo;
+        }),
+      };
+    });
+  };
+
   render() {
     return (
-      <ul>
-        {this.state.todos.map((todo) => (
-          <li>{todo.title}</li>
-        ))}
-      </ul>
+      <div>
+        <Header />
+        <TodosList todos={this.state.todos} handleChange={this.handleChange} />;
+      </div>
     );
   }
 }
