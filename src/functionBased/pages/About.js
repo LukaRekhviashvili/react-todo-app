@@ -3,7 +3,6 @@ import { useRouteMatch, Link, Route } from 'react-router-dom';
 import SinglePage from './SinglePage';
 
 const About = () => {
-  console.log(useRouteMatch());
   const { url, path } = useRouteMatch();
 
   return (
